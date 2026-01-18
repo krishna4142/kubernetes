@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kubernetes Exam Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="body"> 
+<header id="head">
+  <div>
+    <h1>KUBERNETES EXAM PORTAL</h1>
+    <span>Learning & Assessment Platform</span>
+   </div>
+  <div class="logo">☸️</div>
+</header>
+
+<div class="container1">
+
+  <!-- Level Selection -->
+  <div id="level-section">
+    <h2>Select Exam Level</h2>
+    <select id="levelSelect">
+      <option value="">-- Choose Level --</option>
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+      <option value="4">Level 4</option>
+      <option value="5">Level 5</option>
+      <option value="6">Level 6</option>
+      <option value="7">Level 7</option>
+      <option value="8">Level 8</option>
+      <option value="9">Level 9</option>
+      <option value="10">Level 10</option>
+    </select>
+
+    <button onclick="startExam()">Start Exam</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" style="display:none;">
+    <h2 id="exam-title"></h2>
+    <form id="examForm"></form>
+    <button class="submit-btn" onclick="submitExam()">Submit Exam</button>
+  </div>
+
+  <!-- Result Section -->
+  <div id="result-section" style="display:none;">
+    <h2>Exam Result</h2>
+    <p id="resultText"></p>
+    <button onclick="location.reload()">Restart</button>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Kubernetes Exam Portal
+</footer>
+</div>
+<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script type="module" src="firebase.js"></script>
+</body>
+</html>

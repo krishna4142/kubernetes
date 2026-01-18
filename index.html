@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Kubernetes Login & Register</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     * {
       box-sizing: border-box;
@@ -59,7 +60,7 @@
       margin-bottom: 22px;
     }
 
-    input {
+    .input {
       width: 100%;
       padding: 13px;
       margin: 10px 0;
@@ -68,7 +69,7 @@
       font-size: 14px;
     }
 
-    input:focus {
+    .input:focus {
       outline: none;
       border-color: #0d6efd;
       box-shadow: 0 0 0 2px rgba(13,110,253,0.2);
@@ -110,7 +111,7 @@
   </style>
 </head>
 <body>
-
+<div id="body1"> 
 <header>
   KUBERNETES
   <span> (L1 , L2 , L3 )</span>
@@ -119,11 +120,12 @@
 <div class="container">
   <h2 id="formTitle">Create Account</h2>
 
-  <input type="text" id="name" placeholder="Full Name">
-  <input type="number" id="phone" placeholder="Phone Number">
-  <input type="email" id="email" placeholder="Email Address">
+  <input type="text" id="name" class="input" placeholder="Full Name">
+  <input type="number" id="phone" class="input" placeholder="Phone Number">
+  <input type="email" id="email" class="input" placeholder="Email Address">
 
-  <button onclick="submitForm()">Continue</button>
+  <button onclick="submitForm()" id="A">Continue</button>
+  <button onclick="userlogin()" id="B">Continue</button>
 
   <div class="toggle" onclick="toggleForm()">
     Already have an account? Login
@@ -133,11 +135,70 @@
     Kubernetes Training Portal
   </div>
 </div>
+</div>
+
+<!-- levels set up -->
+
+<div id="body" style="display: none;"> 
+<header id="head">
+  <div>
+    <h1>KUBERNETES EXAM PORTAL</h1>
+    <span>Learning & Assessment Platform</span>
+   </div>
+  <div class="logo">☸️</div>
+</header>
+
+<div class="container1">
+
+  <!-- Level Selection -->
+  <div id="level-section">
+    <h2>Select Exam Level</h2>
+    <select id="levelSelect">
+      <option value="">-- Choose Level --</option>
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+      <option value="4">Level 4</option>
+      <option value="5">Level 5</option>
+      <option value="6">Level 6</option>
+      <option value="7">Level 7</option>
+      <option value="8">Level 8</option>
+      <option value="9">Level 9</option>
+      <option value="10">Level 10</option>
+    </select>
+
+    <button onclick="startExam()">Start Exam</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="exam-section" style="display:none;">
+    <h2 id="exam-title"></h2>
+    <form id="examForm"></form>
+    <button class="submit-btn" onclick="submitExam()">Submit Exam</button>
+  </div>
+
+  <!-- Result Section -->
+  <div id="result-section" style="display:none;">
+    <h2>Exam Result</h2>
+    <p id="resultText"></p>
+    <button onclick="location.reload()">Restart</button>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Kubernetes Exam Portal
+</footer>
+</div>
+
 
 <script>
   let isRegister = true;
-
+    document.getElementById("B").style.display="none"
   function toggleForm() {
+    
+    document.getElementById("A").style.display="none"
+    document.getElementById("B").style.display="block"
     isRegister = !isRegister;
 
     document.getElementById("formTitle").innerText =
@@ -151,26 +212,14 @@
   }
 
   function submitForm() {
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-
-    if (!name || !phone) {
-      alert("Please enter Name and Phone Number");
-      return;
-    }
-
-    if (isRegister) {
-      const email = document.getElementById("email").value;
-      if (!email) {
-        alert("Please enter Email");
-        return;
-      }
-      alert("Registration successful!");
-    } else {
-      alert("Login successful!");
-    }
+    createuseraccount()
+    
+    
   }
 </script>
-
+<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script type="module" src="firebase.js"></script>
 </body>
 </html>
