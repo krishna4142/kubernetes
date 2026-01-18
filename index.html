@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kubernetes Login & Register</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.25);
+      color: #fff;
+      padding: 22px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    header span {
+      font-size: 15px;
+      display: block;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+
+    .container {
+      width: 380px;
+      background: #ffffff;
+      margin: 50px auto;
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      text-align: center;
+      color: #0d6efd;
+      margin-bottom: 22px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 2px rgba(13,110,253,0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 18px;
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #0d6efd;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  KUBERNETES
+  <span> (L1 , L2 , L3 )</span>
+</header>
+
+<div class="container">
+  <h2 id="formTitle">Create Account</h2>
+
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="number" id="phone" placeholder="Phone Number">
+  <input type="email" id="email" placeholder="Email Address">
+
+  <button onclick="submitForm()">Continue</button>
+
+  <div class="toggle" onclick="toggleForm()">
+    Already have an account? Login
+  </div>
+
+  <div class="footer">
+    Kubernetes Training Portal
+  </div>
+</div>
+
+<script>
+  let isRegister = true;
+
+  function toggleForm() {
+    isRegister = !isRegister;
+
+    document.getElementById("formTitle").innerText =
+      isRegister ? "Create Account" : "Login";
+
+    document.getElementById("email").style.display =
+      isRegister ? "block" : "none";
+
+    document.querySelector(".toggle").innerText =
+      isRegister ? "Already have an account? Login" : "New user? Register";
+  }
+
+  function submitForm() {
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+
+    if (!name || !phone) {
+      alert("Please enter Name and Phone Number");
+      return;
+    }
+
+    if (isRegister) {
+      const email = document.getElementById("email").value;
+      if (!email) {
+        alert("Please enter Email");
+        return;
+      }
+      alert("Registration successful!");
+    } else {
+      alert("Login successful!");
+    }
+  }
+</script>
+
+</body>
+</html>
