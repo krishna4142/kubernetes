@@ -130,7 +130,7 @@ import { getDatabase, ref, set, get, child, push, update } from "https://www.gst
         .then((snapshot) => {
             const data = snapshot.val();
             if (snapshot.exists()) {
-                 if(data.level[0]==userlevel){
+                 if(data.level==userlevel){
                     let level=data.level+1
                     database.ref('k8s/' + number).set({
                     username: data.username,
