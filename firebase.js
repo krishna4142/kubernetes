@@ -104,7 +104,7 @@ import { getDatabase, ref, set, get, child, push, update } from "https://www.gst
      database.ref('k8s/' + number).once('value')
         .then((snapshot) => {
             if (snapshot.exists()) {
-                alert('enter snapshort')
+                // alert('enter snapshort')
                 const data = snapshot.val();
                 if(data.level>=userlevel){
                      document.getElementById('chouselevel').innerText=`${userlevel}`
@@ -215,9 +215,12 @@ window.submitExam=function() {
   document.getElementById("exam-section").style.display = "none";
   document.getElementById("result-section").style.display = "block";
   document.getElementById("resultText").innerText = `You scored ${score} out of 10`;
-  if(score>1){
-    alert('u r elegeble for next round , plese weait you score will be updated .......')
+  if(score>8){
+    alert('you are elegeble for next round , plese weait you score will be updated .......')
     updatescore()
+  }
+  else{
+    alert('you are not elegeble for next level ......')
   }
 }
 
