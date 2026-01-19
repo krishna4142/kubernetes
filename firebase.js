@@ -215,7 +215,7 @@ window.submitExam=function() {
   document.getElementById("exam-section").style.display = "none";
   document.getElementById("result-section").style.display = "block";
   document.getElementById("resultText").innerText = `You scored ${score} out of 10`;
-  if(score>8){
+  if(score>1){
     alert('you are elegeble for next round , plese weait you score will be updated .......')
     updatescore()
   }
